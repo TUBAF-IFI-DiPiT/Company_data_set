@@ -1,1 +1,1 @@
-# Company_data_set
+# Company data set of the DiP-iT Project
