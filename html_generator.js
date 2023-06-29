@@ -50,7 +50,7 @@ init_doc()
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[25]:
+# In[ ]:
 
 
 #from pathlib import Path
@@ -61,28 +61,26 @@ pn.extension('tabulator')
 import hvplot.pandas
 
 
-# In[26]:
+# In[ ]:
 
 
 ## Local data storage
-file_name = "repository_data_final.csv"
-folder_name = "data_1.0/"
+
+#file_name = "repository_data_final.csv"
+#folder_name = "data_1.0/"
 #data_file = Path.cwd() / ".." / folder_name / file_name
 #df = pd.read_csv(data_file)
 
 
-# In[27]:
+# In[ ]:
 
 
 # web based data storage
-#df = pd.read_csv("https://sebastianzug.github.io/TUBAF-IFI-DiPiT/Company_data_set/repository_data_final.csv?raw=true")
-#df = pd.read_csv("https://github.com/TUBAF-IFI-DiPiT/Company_data_set/blob/main/repository_data_final.csv?raw=true")
+
 df = pd.read_csv("https://raw.githubusercontent.com/TUBAF-IFI-DiPiT/Company_data_set/main/repository_data_final.csv")
 
-#df = pd.read_csv("https://raw.githubusercontent.com/TUBAF-IFI-DiPiT/Company_data_set/gh_pages/repository_data_final.csv")
 
-
-# In[28]:
+# In[ ]:
 
 
 df_summary = df.copy()
@@ -103,7 +101,7 @@ df_summary = df_summary[df_summary.relevant]
 
 # ## Preparation
 
-# In[29]:
+# In[ ]:
 
 
 if 'data' not in pn.state.cache.keys():
@@ -117,7 +115,7 @@ idf = df_summary.interactive()
 
 # ## Part 1: Diagramm
 
-# In[30]:
+# In[ ]:
 
 
 param = df_summary.organization_name.unique().tolist()
@@ -129,7 +127,7 @@ select_org = pn.widgets.Select(
 )
 
 
-# In[31]:
+# In[ ]:
 
 
 data_pipeline_selectcomp_basic = (
@@ -145,7 +143,7 @@ data_pipeline_selectcomp_basic = (
 data_pipeline_selectcomp_basic.head()
 
 
-# In[32]:
+# In[ ]:
 
 
 heatmap = data_pipeline_selectcomp_basic.hvplot.heatmap(x='weekly_cc_max', y='effective_weeks', C='count', 
@@ -158,7 +156,7 @@ heatmap
 
 # ## Part 2: Parameter diagram
 
-# In[33]:
+# In[ ]:
 
 
 param = ['stars',
@@ -173,7 +171,7 @@ param = ['stars',
        'weekly_cc_mean_normalized']
 
 
-# In[34]:
+# In[ ]:
 
 
 data_pipeline_selectcomp = (
@@ -191,7 +189,7 @@ data_pipeline_selectcomp = (
 )
 
 
-# In[35]:
+# In[ ]:
 
 
 company_table = data_pipeline_selectcomp.pipe(pn.widgets.Tabulator) 
@@ -199,7 +197,7 @@ company_table = data_pipeline_selectcomp.pipe(pn.widgets.Tabulator)
 company_table
 
 
-# In[36]:
+# In[ ]:
 
 
 data_pipeline_selectcomp_all = (
@@ -207,7 +205,7 @@ data_pipeline_selectcomp_all = (
 )
 
 
-# In[37]:
+# In[ ]:
 
 
 company_table_all = data_pipeline_selectcomp_all.pipe(pn.widgets.Tabulator) 
@@ -215,19 +213,19 @@ company_table_all = data_pipeline_selectcomp_all.pipe(pn.widgets.Tabulator)
 
 # ## Generate Dashboard
 
-# In[38]:
+# In[ ]:
 
 
 template = pn.template.FastListTemplate(
     title = "DiP-iT Dataset",
     sidebar =[pn.pane.Markdown("# Abstract"),
               pn.pane.Markdown("This page illustrates the usage of DiP-iT data set covering 17000 repositories of industrial Github repositories. The collection includes project parameters of 17 companies and was generated in 2021."),
-              pn.pane.Markdown("An overview about the contained parameters is provided [here](). We used the [github2pandas Package]() for generating the data set."),
+              pn.pane.Markdown("An overview about the contained parameters is provided [here](https://github.com/TUBAF-IFI-DiPiT/github2pandas_company_evaluation/tree/main). We used the [github2pandas Package](https://github.com/TUBAF-IFI-DiPiT/github2pandas) for generating the data set."),
               pn.pane.Markdown("# Company selection"),
               pn.pane.Markdown("The dashboard filters the repositories and depicts the distributions of contributors and duration for smaller projects."),
               select_org,
               pn.pane.Markdown("# Data set"),
-              pn.pane.Markdown("The whole data set can be downloaded [here]()"),
+              pn.pane.Markdown("The whole data set can be downloaded [here](https://raw.githubusercontent.com/TUBAF-IFI-DiPiT/Company_data_set/main/repository_data_final.csv)"),
              ],
     main=[pn.Row
             (
@@ -247,12 +245,6 @@ template = pn.template.FastListTemplate(
 
 #template.show()
 template.servable()
-
-
-# In[ ]:
-
-
-
 
 
 
