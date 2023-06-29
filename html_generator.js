@@ -220,13 +220,13 @@ company_table_all = data_pipeline_selectcomp_all.pipe(pn.widgets.Tabulator)
 
 template = pn.template.FastListTemplate(
     title = "DiP-iT Dataset",
-    sidebar =[pn.pane.Markdown("#Abstract"),
+    sidebar =[pn.pane.Markdown("# Abstract"),
               pn.pane.Markdown("This page illustrates the usage of DiP-iT data set covering 17000 repositories of industrial Github repositories. The collection includes project parameters of 17 companies and was generated in 2021."),
               pn.pane.Markdown("An overview about the contained parameters is provided [here](). We used the [github2pandas Package]() for generating the data set."),
-              pn.pane.Markdown("#Company selection"),
+              pn.pane.Markdown("# Company selection"),
               pn.pane.Markdown("The dashboard filters the repositories and depicts the distributions of contributors and duration for smaller projects."),
               select_org,
-              pn.pane.Markdown("#Data set"),
+              pn.pane.Markdown("# Data set"),
               pn.pane.Markdown("The whole data set can be downloaded [here]()"),
              ],
     main=[pn.Row
