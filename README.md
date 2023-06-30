@@ -1,5 +1,7 @@
 # Company data set of the DiP-iT Project
 
+The interactive data explorer is available at [Link](https://tubaf-ifi-dipit.github.io/Company_data_set/).
+
 ## Data collection
 
 This repository  illustrates the usage of DiP-iT data set covering 17869 repositories of industrial Github repositories. The collection includes project parameters of 28 companies and was generated in 2021.
